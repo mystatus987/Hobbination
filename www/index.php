@@ -1,4 +1,7 @@
 <?php
 echo "hello world";
-phpinfo();
+// phpinfo();
+$myvar = 20;
+$myname = "Johannes";
+echo $myname . " " . $myvar;
 ?>
