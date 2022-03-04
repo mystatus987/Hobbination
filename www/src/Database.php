@@ -16,6 +16,7 @@ class Database {
     $this -> password = getenv("dbpass");
     $this -> database_name = getenv("dbname");
     $this -> database_host = getenv("dbhost");
+    $this -> connect();
   }
 
   private function connect() 
