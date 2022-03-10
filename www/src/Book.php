@@ -17,7 +17,17 @@ class Book extends Database {
 
   public function getItems() 
   {
-    $query = "SELECT * FROM book";
+    $query = "
+    SELECT 
+    book_id, 
+    book_title, 
+    tagline, 
+    isbn10, 
+    isbn13, 
+    year, 
+    pages 
+    FROM book";
+
     try
     {
       $statement = $this -> dbconnection -> prepare( $query );
@@ -25,9 +35,17 @@ class Book extends Database {
       {
         throw new Exception("problem with query " . $query );
       }
+
       if( !$statement -> execute() ) 
       {
         throw new Exception("query failed to execute");
+      }
+      else 
+      {
+        $books = array();
+        $items = array();
+        $result = $statement -> get_result();
+        
       }
     }
     catch ( Exception $exception ) 
