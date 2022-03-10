@@ -8,7 +8,10 @@ class Book extends Database {
   private $dbconnection;
   public function __construct()
   {
+    // call the __construct() method of the Database class to initialise
     parent::__construct();
+    // get the connection after it's been created and keep a reference in 
+    // a local variable called $db_connection
     $this -> dbconnection = parent::getConnection();
   }
 
