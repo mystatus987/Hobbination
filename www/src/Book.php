@@ -45,8 +45,16 @@ class Book extends Database {
         $books = array();
         $items = array();
         $result = $statement -> get_result();
-        
+        while( $row = $result -> fetch_assoc() ) 
+        {
+          array_push( $items, $row );
+        }
+        $books["total"] = count($items);
+        $books["items"] = $items;
+
+        return $books;
       }
+      return null;
     }
     catch ( Exception $exception ) 
     {
