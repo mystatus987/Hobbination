@@ -8,10 +8,5 @@ use textreview\Book;
 $book = new Book();
 $items = $book -> getItems();
 
-if ( $items ) {
-  print_r($items);
-}
-else {
-  echo "no books found";
-}
+$loader = new \Twig\Loader\FilesystemLoader("templates");
 ?>
