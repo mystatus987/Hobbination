@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Apr 01, 2022 at 02:53 AM
+-- Generation Time: Apr 04, 2022 at 02:19 AM
 -- Server version: 8.0.28
 -- PHP Version: 8.0.15
 
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `hobbination_database____category` (
-  `COL 1` varchar(11) NOT NULL,
-  `COL 2` varchar(17) DEFAULT NULL
+  `cate_id` varchar(11) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cate_name` varchar(17) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `hobbination_database____category`
 --
 
-INSERT INTO `hobbination_database____category` (`COL 1`, `COL 2`) VALUES
+INSERT INTO `hobbination_database____category` (`cate_id`, `cate_name`) VALUES
 ('1', 'Tennis '),
 ('10', 'Crecket '),
 ('11', 'Football'),
@@ -76,17 +76,17 @@ INSERT INTO `hobbination_database____category` (`COL 1`, `COL 2`) VALUES
 --
 
 CREATE TABLE `hobbination_database____place` (
-  `COL 1` varchar(8) NOT NULL,
-  `COL 2` varchar(46) DEFAULT NULL,
-  `COL 3` varchar(56) DEFAULT NULL,
-  `COL 4` varchar(17) DEFAULT NULL
+  `place_id` varchar(8) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `place_name` varchar(46) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `place_address` varchar(56) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `place_phone_number` varchar(17) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `hobbination_database____place`
 --
 
-INSERT INTO `hobbination_database____place` (`COL 1`, `COL 2`, `COL 3`, `COL 4`) VALUES
+INSERT INTO `hobbination_database____place` (`place_id`, `place_name`, `place_address`, `place_phone_number`) VALUES
 ('1', 'Loyal Henry Park', '49 Bromborough Rd, Roseville NSW 2069', '32987123'),
 ('10', 'Inglis Park', '164 Barker St, Randwick NSW 2031', '27185111'),
 ('11', 'McDonald\'s Mascot', '9 Ross Smith Ave, Mascot NSW 2020', '26540443'),
@@ -126,16 +126,16 @@ INSERT INTO `hobbination_database____place` (`COL 1`, `COL 2`, `COL 3`, `COL 4`)
 --
 
 CREATE TABLE `hobbination_database____review` (
-  `COL 1` varchar(9) NOT NULL,
-  `COL 2` varchar(12) DEFAULT NULL,
-  `COL 3` varchar(18) DEFAULT NULL
+  `review_id` varchar(9) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `review_title` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `review_description` varchar(18) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `hobbination_database____review`
 --
 
-INSERT INTO `hobbination_database____review` (`COL 1`, `COL 2`, `COL 3`) VALUES
+INSERT INTO `hobbination_database____review` (`review_id`, `review_title`, `review_description`) VALUES
 ('1', 'title1', 'discription1'),
 ('review_id', 'review_title', 'review_discription');
 
@@ -146,19 +146,18 @@ INSERT INTO `hobbination_database____review` (`COL 1`, `COL 2`, `COL 3`) VALUES
 --
 
 CREATE TABLE `hobbination_database____user___1_` (
-  `COL 1` varchar(7) NOT NULL,
-  `COL 2` varchar(10) DEFAULT NULL,
-  `COL 3` varchar(14) DEFAULT NULL,
-  `COL 4` varchar(13) DEFAULT NULL
+  `user_id` int NOT NULL,
+  `user_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_email` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `user_password` varchar(13) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `hobbination_database____user___1_`
 --
 
-INSERT INTO `hobbination_database____user___1_` (`COL 1`, `COL 2`, `COL 3`, `COL 4`) VALUES
-('1', 'test', 'user@gmail.com', 'password'),
-('user_id', 'user_name ', 'user_email', 'user_password');
+INSERT INTO `hobbination_database____user___1_` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
+(1, 'user', 'user@gmail.com', 'user');
 
 --
 -- Indexes for dumped tables
@@ -168,25 +167,35 @@ INSERT INTO `hobbination_database____user___1_` (`COL 1`, `COL 2`, `COL 3`, `COL
 -- Indexes for table `hobbination_database____category`
 --
 ALTER TABLE `hobbination_database____category`
-  ADD PRIMARY KEY (`COL 1`);
+  ADD PRIMARY KEY (`cate_id`);
 
 --
 -- Indexes for table `hobbination_database____place`
 --
 ALTER TABLE `hobbination_database____place`
-  ADD PRIMARY KEY (`COL 1`);
+  ADD PRIMARY KEY (`place_id`);
 
 --
 -- Indexes for table `hobbination_database____review`
 --
 ALTER TABLE `hobbination_database____review`
-  ADD PRIMARY KEY (`COL 1`);
+  ADD PRIMARY KEY (`review_id`);
 
 --
 -- Indexes for table `hobbination_database____user___1_`
 --
 ALTER TABLE `hobbination_database____user___1_`
-  ADD PRIMARY KEY (`COL 1`);
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `hobbination_database____user___1_`
+--
+ALTER TABLE `hobbination_database____user___1_`
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
