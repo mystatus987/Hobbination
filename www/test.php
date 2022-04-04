@@ -8,5 +8,5 @@ use textreview\Book;
 $book = new Book();
 $items = $book -> getItems();
 
-$loader = new \Twig\Loader\FilesystemLoader("templates");
+// $loader = new \Twig\Loader\FilesystemLoader("templates");
 ?>
