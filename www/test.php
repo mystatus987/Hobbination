@@ -6,12 +6,12 @@ require("vendor/autoload.php");
 use textreview\Place;
 
 $place = new Place();
-$items = $place -> getItems();
+$listOfPlace = $place -> getPlace();
 
 
 $loader = new \Twig\Loader\FilesystemLoader('templates');
-$twig = new Twig\Environment($loader,["catche" =>false]);
+$twig = new Twig\Environment($loader,["cache" =>false]);
 
 // rendering page 
-echo $twig -> render("home.html.twig",["page_title" => "TextReview","greenthing" => "Hello there","places" =>$items]);
+echo $twig -> render("home.html.twig",["page_title" => "HOBBINATION","greenthing" => "Hello there","places" =>$listOfPlace]);
 ?>

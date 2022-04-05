@@ -15,9 +15,9 @@ class Place extends Database {
     $this -> dbconnection = parent::getConnection();
   }
 
-  public function getItems() 
+  public function getPlace() 
   {
-    $query = "SELECT * FROM hobbination_database____place";
+    $query = "SELECT * FROM place ";
 
     try
     {
