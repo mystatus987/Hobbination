@@ -60,5 +60,51 @@ class Place extends Database
     }
   }
 
-
+  public function getDetails($place_id)
+  {
+    $query = "
+    SELECT
+    place.place_id AS id,
+    place_name,
+    place_address,
+    place_phone_number,
+    place_description,
+    place_image.image_id,
+    images.image_name AS picture,
+    review.review_title,
+    review.review_description,
+    category.category_name,
+    user.user_name
+  FROM
+    place
+    INNER JOIN place_image ON place.place_id = place_image.place_id
+    INNER JOIN images ON place_image.image_id = images.image_id
+    INNER JOIN place_review ON place.place_id = place_review.place_id
+    INNER JOIN review ON place_review.review_id = review.review_id
+    INNER JOIN place_category ON place.place_id = place_category.place_id
+    INNER JOIN category ON place_category.category_id = category.category_id
+    INNER JOIN user ON user.user_id = review.user_fk
+    WHERE place.place_id = ?
+    ";
+    try {
+      $statement = $this -> dbconnection -> prepare( $query );
+      if( !$statement ) {
+        throw new Exception("query error");
+      }
+      // binding ? to replace place_id
+      $statement -> bind_param( "i", $place_id );
+      if( !$statement -> execute() ) {
+        throw new Exception("query error");
+      }
+      else {
+        $result = $statement -> get_result();
+        $detail = $result -> fetch_assoc();
+        return $detail;
+      }
+    }
+    catch( Exception $exc) {
+      echo $exc -> getMessage();
+      return false;
+    }
+  }
 }

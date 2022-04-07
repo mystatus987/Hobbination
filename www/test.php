@@ -13,5 +13,5 @@ $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new Twig\Environment($loader,["cache" =>false]);
 
 // rendering page 
-echo $twig -> render("home.html.twig",["page_title" => "HOBBINATION","greenthing" => "Hello there","places" =>$listOfPlace]);
+echo $twig -> render("home.html.twig",["page_title" => "HOBBINATION","places" =>$listOfPlace]);
 ?>

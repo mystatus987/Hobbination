@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Apr 05, 2022 at 03:51 AM
+-- Generation Time: Apr 07, 2022 at 03:48 AM
 -- Server version: 8.0.28
 -- PHP Version: 8.0.15
 
@@ -52,6 +52,38 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 (13, 'Beach'),
 (14, 'Fitness'),
 (15, 'Table game');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `images`
+--
+
+CREATE TABLE `images` (
+  `image_id` int NOT NULL,
+  `image_name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `images`
+--
+
+INSERT INTO `images` (`image_id`, `image_name`) VALUES
+(1, 'park_01.jpeg'),
+(2, 'park_02.jpeg'),
+(3, 'park_03.jpeg'),
+(4, 'park_04.jpeg'),
+(5, 'park_05.jpeg'),
+(6, 'park_06.jpeg'),
+(7, 'park_07.jpeg'),
+(8, 'park_08.jpeg'),
+(9, 'park_09.jpeg'),
+(10, 'park_10.jpeg'),
+(11, 'park_11.jpeg'),
+(12, 'park_12.jpeg'),
+(13, 'park_13.jpeg'),
+(14, 'park_14.jpeg'),
+(15, 'park_15.jpeg');
 
 -- --------------------------------------------------------
 
@@ -125,6 +157,38 @@ INSERT INTO `place_category` (`place_id`, `category_id`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `place_image`
+--
+
+CREATE TABLE `place_image` (
+  `place_id` int NOT NULL,
+  `image_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `place_image`
+--
+
+INSERT INTO `place_image` (`place_id`, `image_id`) VALUES
+(83, 1),
+(80, 2),
+(76, 3),
+(1, 4),
+(75, 5),
+(2, 6),
+(79, 7),
+(78, 8),
+(77, 9),
+(82, 10),
+(85, 11),
+(84, 12),
+(84, 13),
+(86, 14),
+(74, 15);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `place_review`
 --
 
@@ -138,21 +202,21 @@ CREATE TABLE `place_review` (
 --
 
 INSERT INTO `place_review` (`place_id`, `review_id`) VALUES
-(78, 3),
-(77, 15),
-(85, 8),
-(2, 14),
-(2, 7),
-(82, 11),
-(79, 7),
-(77, 9),
-(86, 12),
-(74, 2),
-(84, 13),
-(75, 10),
-(81, 5),
-(76, 11),
-(72, 6);
+(83, 21),
+(80, 28),
+(76, 22),
+(1, 29),
+(72, 29),
+(75, 24),
+(2, 17),
+(73, 23),
+(79, 31),
+(78, 18),
+(78, 19),
+(81, 26),
+(77, 20),
+(85, 30),
+(84, 27);
 
 -- --------------------------------------------------------
 
@@ -163,29 +227,30 @@ INSERT INTO `place_review` (`place_id`, `review_id`) VALUES
 CREATE TABLE `review` (
   `review_id` int NOT NULL,
   `review_title` varchar(50) NOT NULL,
-  `review_description` text NOT NULL
+  `review_description` text NOT NULL,
+  `user_fk` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`review_id`, `review_title`, `review_description`) VALUES
-(2, 'This place is amazing ', 'Love this park!!! Don’t have a dog but we love grabbing something to eat nearby and eat it at this nice park while watching the dogs play around :))'),
-(3, 'Awesome view ', 'This Surry Hills park is a lovely spot for people and dogs. It is known as the dog park in the local area and a great place with a dog or meet dogs! There\'s plenty of places to sit and watch the world go by. Nice different'),
-(4, 'Good ', '3 months ago\r\nHyde Park is truly the heart of the city of Sydney with extremely easy access via public transport. It is Australia’s oldest park and also one of its most well-known.'),
-(5, 'Not bad', 'Beautiful park next to the university of Sydney. It has a large pond near Broadway with lilly pads and many ducks. A good place to sit and read if you have time  A children\'s playground is on the City Road side towards NewTown   and Victoria Pool is in the centre.'),
-(6, 'Lovely park', 'If you haven\'t been here... Come! '),
-(7, 'Good for walk', 'Ended up unexpectedly walking through Prince Alfred Park around 6:30pm on a Monday evening due to a massive foul-up of the Sydney train network. Went to the pool for my regular swim'),
-(8, 'G day\'s ', 'this park is close to where I live, I go there everyday, I like the vibe there, nice people doing picnics or walking their dogs, good place to exercise or go jogging.'),
-(9, 'Nice ppl', 'Off leash dog area, tennis courts, picnic tables, outdoor pool ($7 entry), outdoor workout equipment, this park has everything you\'d ever need'),
-(10, 'Test ', 'Park is quiet and is just next to the new light rail stop. It has doggy bags and water bowl for dog owners. Park usually is not so busy and it\'s good. There is also a playground for kids and a skateboard ramp. Pretty good tucked away spot for inner city living.'),
-(11, 'Hello', 'Lovely & peaceful,. perfect place to chill out for a few, or walk yr dog. Nice park for some outdoor play!'),
-(12, 'park ', 'A cute little Park. New equipment installed near the end of 2021.Swings and mobkey bats. Some benches and tables to enjoy a meal or play games. Not enough space to play ballgames. No toilets nearby and no food nearby. Good enough for fMilies with kids who live close.'),
-(13, 'this is good ', 'Great park. At least close to 40 thousand people turned out at the march this afternoon. Very windy and sunny. Loving day out. The birds did not take notice of what was going on as the flew about their own business. COVIDS A HOAX no doubt at all.\r\n'),
-(14, 'good', 'We had so much fun there also found parking just few blocks away. If your planning to visit make sure you have two or three hours to go around.'),
-(15, 'beautiful ', 'Great park to seat at for lunch or afternoon tea'),
-(16, 'Hi', 'A beautiful park, lovely gardens and open spaces, fruit bat colony, birds of all types. Great for exercise, a stroll or picnic.');
+INSERT INTO `review` (`review_id`, `review_title`, `review_description`, `user_fk`) VALUES
+(17, 'This place is amazing ', 'Nice little park located within walking distance to Circular Quay.  Honestly it’s a lovely little place to sit down, relax and take ten minutes out.', 3),
+(18, 'Awesome view ', 'Since the last review there has been extensive work by council to improve this park. Lots of new plants around and better care of the grass areas. Still more work to be done but looking so much better.', 2),
+(19, 'Good ', 'Small park in the middle of the city located right next to a lot of bus stops and wynyward train station. Good place to have a sit during lunch breaks in summer time when the sun is out to relax in the middle of a busy day. Lots of food courts around to get food from.', 1),
+(20, 'amazing ', 'This park gives an amazing view of the Darling Harbour, especially the night view. A good place to have family picnic or dinner', 1),
+(21, 'Lovely park', 'Beautiful Sydney, best city in the world in my opinion.  The park is great for sitting and having lunch', 3),
+(22, 'Good for walk', 'Harbourside park with shade - handy for a picnic if visiting the maritime museum or other attractions on the prymont side of darling harbour. Watch out for the bird', 1),
+(23, 'G day\'s ', 'Nice place for photography with wide open grassed area, lots of restaurants nearby, plenty of street parking if you get lucky, it\'s surrounded by the beautiful Opera House, the Harbour Bridge and Sydney city Skyline, there is a Marina with some big dollars in gorgeous yachts, good place for a nice walk or exercise.', 3),
+(24, 'Nice ppl', 'Lovely grounds to walk around looking at all the famous statues, fountains, and the war memorial. Plenty of seating and grass under shaded trees to sit and relax or have a picnic lunch. The grounds light up at night so you can even stroll through here at night.', 2),
+(25, 'Test ', 'Top marks for its simplicity and location. Simplicity in that although it’s not a better walk or scenery than the Royal Botanical Gardens, it provides a great spot for people to relax for office workers to enjoy their lunch or shoppers to take a breather. The Archibald Fountain is an iconic landmark worth checking out. The location is perfect, so close to Pitt St mall and Museum station, and other landmarks nearby.', 1),
+(26, 'Hello', 'The gorgeous Barangaroo wharf ❤️ Gorgeous views and surroundings, 100% worth a visit 🌅', 3),
+(27, 'park ', 'We had so much fun there also found parking just few blocks away. If your planning to visit make sure you have two or three hours to go around.', 2),
+(28, 'this is good ', 'Great park to seat at for lunch or afternoon tea', 1),
+(29, 'good', 'I absolutely love this park!!  You honestly get some of the best views of the nature.', 3),
+(30, 'beautiful ', 'This was a fun park for our 4 year old. We had take-away at a nearby restaurant and walked down to this park to have a play and eat. No picnic tables which was a downer but had plenty of seating via benches and an under tree seating area. It is a dog friendly park and only one dog was there and stayed off of the playground area (like advised from the sign posted). Would for sure go back to this park.', 2),
+(31, 'Hi', 'Perfect place for the kids to play, or for a great birthday party. Be aware though, no loos!', 1);
 
 -- --------------------------------------------------------
 
@@ -205,7 +270,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`) VALUES
-(1, 'user', 'user@gmail.com', 'user');
+(1, 'user', 'user@gmail.com', 'user'),
+(2, 'user2', 'user2@gmail.com', 'user2'),
+(3, 'user3', 'user3@gmail.com', 'user3');
 
 --
 -- Indexes for dumped tables
@@ -216,6 +283,12 @@ INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_password`) VALUE
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indexes for table `images`
+--
+ALTER TABLE `images`
+  ADD PRIMARY KEY (`image_id`);
 
 --
 -- Indexes for table `place`
@@ -231,6 +304,13 @@ ALTER TABLE `place_category`
   ADD KEY `category_id` (`category_id`);
 
 --
+-- Indexes for table `place_image`
+--
+ALTER TABLE `place_image`
+  ADD KEY `place_id` (`place_id`),
+  ADD KEY `image_id` (`image_id`);
+
+--
 -- Indexes for table `place_review`
 --
 ALTER TABLE `place_review`
@@ -241,7 +321,8 @@ ALTER TABLE `place_review`
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
-  ADD PRIMARY KEY (`review_id`);
+  ADD PRIMARY KEY (`review_id`),
+  ADD KEY `user_fk` (`user_fk`);
 
 --
 -- Indexes for table `user`
@@ -260,6 +341,12 @@ ALTER TABLE `category`
   MODIFY `category_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
+-- AUTO_INCREMENT for table `images`
+--
+ALTER TABLE `images`
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
@@ -269,13 +356,13 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -289,11 +376,24 @@ ALTER TABLE `place_category`
   ADD CONSTRAINT `place_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
+-- Constraints for table `place_image`
+--
+ALTER TABLE `place_image`
+  ADD CONSTRAINT `place_image_ibfk_1` FOREIGN KEY (`place_id`) REFERENCES `place` (`place_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `place_image_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `images` (`image_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Constraints for table `place_review`
 --
 ALTER TABLE `place_review`
   ADD CONSTRAINT `place_review_ibfk_1` FOREIGN KEY (`place_id`) REFERENCES `place` (`place_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   ADD CONSTRAINT `place_review_ibfk_2` FOREIGN KEY (`review_id`) REFERENCES `review` (`review_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Constraints for table `review`
+--
+ALTER TABLE `review`
+  ADD CONSTRAINT `review_ibfk_1` FOREIGN KEY (`user_fk`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
