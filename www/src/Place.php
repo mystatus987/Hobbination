@@ -19,7 +19,20 @@ class Place extends Database
 
   public function getPlace()
   {
-    $query = "SELECT * FROM place ";
+    $query = "
+    SELECT
+      place.place_id,
+      place_name,
+      place_address,
+      place_phone_number,
+      place_description,
+      place_image.image_id,
+      images.image_name AS picture
+    FROM
+      place
+    INNER JOIN place_image ON place.place_id = place_image.place_id
+    INNER JOIN images ON place_image.image_id = images.image_id
+    ";
 
     try {
       $statement = $this->dbconnection->prepare($query);
@@ -48,23 +61,4 @@ class Place extends Database
   }
 
 
-  // public function getReview($place_id)
-  // {
-  //   $query = "
-  //    SELECT
-  //        place.place_id,
-  //        place.place_name,
-  //        place.place_address,
-  //        place.place_phone_number,
-  //        place.place_description,
-  //        place_review.review_id,
-  //        review.review_title AS reviewTitle
-  //    FROM
-  //        place
-  //    INNER JOIN place_review ON place.place_id = place_review.place_id
-  //    INNER JOIN place_review ON place.place_id = place_review.review_id
-  //    WHERE
-  //        place.place_id = ?
-  //     ";
-  // }
 }
