@@ -7,11 +7,15 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <form id="signup" method="post" action="login.php">
+          <form id="signup" method="post" action="signup.php">
+		 
+			   <label for="user-name">Name</label>
+            <input class="form-control" name="name" id="user-name" type="email" placeholder="Your name" required value="{{user_name}}">
+
             <label for="user-email">Email</label>
-            <input class="form-control" name="email" id="user-email" type="email" placeholder="user@domain.com" required value="{{email}}">
+            <input class="form-control" name="email" id="user-email" type="email" placeholder="user@domain.com" required value="{{user_email}}">
             <label>Password</label>
-            <input class="form-control" name="password" id="user-password" type="password" placeholder="minimum 8 characters" required value="{{password}}">
+            <input class="form-control" name="password" id="user-password" type="password" placeholder="minimum 8 characters" required value="{{user_password}}">
             {% set outcome = result.errors | join(", ") %}
             <button type="submit" class="btn btn-info">Sign up</button>
             {% if outcome | length > 0 %}
