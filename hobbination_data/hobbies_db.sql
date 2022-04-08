@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `category` (
   `category_id` int NOT NULL,
   `category_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `category`
@@ -62,7 +62,7 @@ INSERT INTO `category` (`category_id`, `category_name`) VALUES
 CREATE TABLE `images` (
   `image_id` int NOT NULL,
   `image_name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `images`
@@ -93,11 +93,11 @@ INSERT INTO `images` (`image_id`, `image_name`) VALUES
 
 CREATE TABLE `place` (
   `place_id` int NOT NULL,
-  `place_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `place_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `place_name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `place_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `place_phone_number` varchar(9) NOT NULL,
   `place_description` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `place`
@@ -131,7 +131,7 @@ INSERT INTO `place` (`place_id`, `place_name`, `place_address`, `place_phone_num
 CREATE TABLE `place_category` (
   `place_id` int NOT NULL,
   `category_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `place_category`
@@ -163,7 +163,7 @@ INSERT INTO `place_category` (`place_id`, `category_id`) VALUES
 CREATE TABLE `place_image` (
   `place_id` int NOT NULL,
   `image_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `place_image`
@@ -195,7 +195,7 @@ INSERT INTO `place_image` (`place_id`, `image_id`) VALUES
 CREATE TABLE `place_review` (
   `place_id` int NOT NULL,
   `review_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `place_review`
@@ -229,7 +229,7 @@ CREATE TABLE `review` (
   `review_title` varchar(50) NOT NULL,
   `review_description` text NOT NULL,
   `user_fk` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `review`
@@ -263,7 +263,7 @@ CREATE TABLE `user` (
   `user_name` varchar(50) NOT NULL,
   `user_email` varchar(20) NOT NULL,
   `user_password` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE= utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
