@@ -41,24 +41,24 @@
         </div>
         <div class="container mt-5">
             <h4 style="color:#5e6472">Sign into your account</h4>
-        <div class="row">
-            <div class="col">
-            <form id="signup" method="post" action="login.php">
-                {# <label for="user-email">Email</label> #}
-                <input class="form-control my-3 text-faded" name="email" id="user-email" type="email" placeholder="user@domain.com" required value="{{email}}">
-                {# <label>Password</label> #}
-                <input class="form-control my-2" name="password" id="user-password" type="password" placeholder="minimum 8 characters" required value="{{password}}">
-                {% set outcome = result.errors | join(", ") %}
-                <button type="submit" class="btn1 mt-3">Login</button>
-                {% if outcome | length > 0 %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    {{ outcome }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <div class="row">
+                <div class="col">
+                <form id="signup" method="post" action="login.php">
+                    {# <label for="user-email">Email</label> #}
+                    <input class="form-control my-3" name="email" id="user-email" type="email" placeholder="user@domain.com" required value="{{email}}">
+                    {# <label>Password</label> #}
+                    <input class="form-control my-2" name="password" id="user-password" type="password" placeholder="minimum 8 characters" required value="{{password}}">
+                    {% set outcome = result.errors | join(", ") %}
+                    <button type="submit" class="btn1 mt-3">Login</button>
+                    {% if outcome | length > 0 %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ outcome }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+                </form>
                 </div>
-                {% endif %}
-            </form>
             </div>
-        </div>
         </div>
     </div>
    {% include "partial/script.html.twig" %}
