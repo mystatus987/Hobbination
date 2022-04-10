@@ -2,37 +2,44 @@
 <html lang="en">
 	<body>
 		{% include "partial/head.html.twig" %}
-		<h1>Welcome to Hobbination!</h1>
-
-		<div class="card mb-3">
-			<img src="place_images/{{place.picture}}" class="card-img-top" alt="...">
-			<div class="card-body">
-				<h5 class="card-title">{{place.place_name}}</h5>
-				<p class="card-text">Address:
-					{{place.place_address}}</p>
-				<p class="card-text">Phone:
-					{{place.place_phone_number}}</p>
-				<p class="card-text">Description:
-					{{place.place_description}}</p>
+		{% include "partial/navigation.html.twig" %}
+		<div class="card mb-5">
+			<div class="container my-3" style="color:#f7a49e">
+				<h1 class="card-title">{{place.place_name}}</h1>
+			</div>
+			<div class="container">
+				<img src="place_images/{{place.picture}}" class="card-img-top" alt="...">
+				<div class="card-body" style="color:#5e6472">
+					<p class="card-text">Address:
+						{{place.place_address}}</p>
+					<p class="card-text">Phone:
+						{{place.place_phone_number}}</p>
+					<p class="card-text">Description:
+						{{place.place_description}}</p>
+				</div>
 			</div>
 		</div>
-		<h1>REVIEW</h1>
-		<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-			<div class="card-header">
-				<h5 class="card-title">{{place.review_title}}</h5>
+
+		<div class="container mb-5">
+			<h1 class="my-4" style="color:#afd9e0">Reviews</h1>
+			<div class="card text-dark bg-light mb-4" style="max-width: 100rem;">
+				<div class="card-header">
+					<h5 class="card-title pt-2">{{place.review_title}}</h5>
+				</div>
+				<div class="card-body pt-3" style="color:#5e6472">
+					<p class="card-text">{{place.review_description}}</p>
+				</div>
+				<p class="card-text m-3">
+					<small class="text-muted">
+						username:
+						{{place.user_name}}
+					</small>
+				</p>
 			</div>
-			<div class="card-body">
-				<p class="card-text">{{place.review_description}}</p>
-			</div>
-			<p class="card-text">
-				<small class="text-muted">
-					username:
-					{{place.user_name}}
-				</small>
-			</p>
 		</div>
 
 		{% include "partial/script.html.twig" %}
+		{% include "partial/footer.html.twig" %}
 	</body>
 </html>
 
