@@ -74,7 +74,7 @@ class Place extends Database
     review.review_title,
     review.review_description,
     category.category_name,
-    user.user_name
+    user.name
   FROM
     place
     INNER JOIN place_image ON place.place_id = place_image.place_id

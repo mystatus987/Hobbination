@@ -22,12 +22,12 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
 $loader = new \Twig\Loader\FilesystemLoader("templates");
 $twig = new Twig\Environment( $loader, [ "cache" => false ] );
 
-$site_name = "TextReview";
+$site_name = "Hobbination";
 
 echo $twig -> render(
   "signup.html.twig", 
   [
-    "page_title" => "Sign up to TextReview", 
+    "page_title" => "Sign up to Hobbination", 
     "site_name" => $site_name,
     "result" => $result,
     "email" => $user_email,

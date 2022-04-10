@@ -12,13 +12,12 @@ class Session{
     }
     public static function get($name){
         self::init();
-        return $_SESSION[$name] ? $_SESSION[$name]:null;
+        return $_SESSION[$name] ? $_SESSION[$name] : null;
     }
+
     public static function unset($name){
         self::init();
         unset($_SESSION[$name]);
     }
 }
-
-
 ?>
