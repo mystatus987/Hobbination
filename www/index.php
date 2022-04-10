@@ -8,7 +8,7 @@ use textreview\Session;
 $place = new Place();
 $listOfPlace = $place -> getPlace();
 $site_name = "Textreview";
-$email = Session::get("email");
+// $email = Session::get("email");
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new Twig\Environment($loader,["cache" =>false]);
 
