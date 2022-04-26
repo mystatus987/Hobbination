@@ -4,11 +4,6 @@
 		<body>
 
 			<h1>Welcome to Hobbination!</h1>
-			<p>
-			{% if  email | length > 0 %} 
-				<h1>{{email}}</h1>
-			{% endif %}
-			</p>
 			<div class="container">
 				<div class="row">
 					{% for place in places.items %}

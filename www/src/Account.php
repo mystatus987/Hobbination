@@ -11,7 +11,7 @@ class Account extends Database{
       $this -> dbconnection = parent::getConnection();
     }
   
-    public function create( $email, $password ) {
+    public function create( $name,$email, $password ) {
       $errors = array();
       $response = array();
       // check if email is valid
@@ -29,7 +29,7 @@ class Account extends Database{
         VALUES( ?, ?, ? )";
         $statement = $this -> dbconnection -> prepare( $query );
         $hashed = password_hash( $password, PASSWORD_DEFAULT );
-        $statement -> bind_param( "ss" , $email, $hashed );
+        $statement -> bind_param( "sss" , $name, $email, $hashed );
         // try to execute statement
         try{
           if( !$statement -> execute() ) {
@@ -64,7 +64,7 @@ class Account extends Database{
     public function login( $email, $password ) {
       $errors = array();
       $response = array();
-      $query = "SELECT * FROM user ";
+      $query = "SELECT user_id, email, password FROM user WHERE email = ?";
 
       $statement = $this -> dbconnection -> prepare($query);
       $statement -> bind_param("s",$email);

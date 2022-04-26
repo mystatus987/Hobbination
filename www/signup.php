@@ -11,11 +11,12 @@ $user_email = null;
 $user_password = null;
 
 if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
+  $user_name = $_POST["name"];
   $user_email = $_POST["email"];
   $user_password = $_POST["password"];
   // check if user_email and user_password is not empty
   if( strlen($user_email) > 0 && strlen($user_password) > 0 ) {
-    $result = $account -> create( $user_email, $user_password);
+    $result = $account -> create( $user_name,$user_email, $user_password);
   }
 }
 
