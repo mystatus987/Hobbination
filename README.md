@@ -39,4 +39,4 @@ SetEnv dbpass password
 SetEnv dbname db_data
 # db is the host name for the database in docker (defined as a service in docker-compose.yml)
 # if you are using Xampp the host should be localhost
-SetEnv dbhost db
+SetEnv dbhost db# Hobby

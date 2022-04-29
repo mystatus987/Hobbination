@@ -3,7 +3,7 @@
   {% include "partial/head.html.twig" %}
   <body>
   
-    <div class="container">
+    {# <div class="container">
       <div class="row">
         <div class="col-md-4 offset-md-4">
           <form id="signup" method="post" action="login.php">
@@ -21,7 +21,67 @@
             {% endif %}
           </form>
         </div>
-      </div>
+      </div> #}
+    <title>Sign into Hobbination</title>
+  {% include "partial/head.html.twig" %}
+  <style>
+    body{
+        background-image: url("assets/hobby_bg.jpeg");
+    }
+    .btn1{
+        border: none;
+        outline: none;
+        height: 50px;
+        width: 100%;
+        background-color: #f7a49e;
+        color: white;
+        font-weight: bold;
+        font-size: 1.3rem;
+        border-radius: 5px;
+    }
+    .btn1:hover{
+        background-color: #ee9287;
+        color: white;
+    }
+    img{
+        width: 50%;
+    }
+    .container1{
+        margin: auto;
+        margin-top: 80px;
+        width: 60%;
+        padding: 50px;
+        box-shadow: 6px 6px 12px grey;
+        border-radius: 20px;
+        background: rgba(249, 243, 222, 0.95);
+    }
+  </style>
+  <body>
+     <div class="container1">
+        <div class="container">
+            <img src="assets/hobbination_logo.png" class="mx-auto d-block m-5" alt"">
+        </div>
+        <div class="container mt-5">
+            <h4 style="color:#5e6472">Sign into your account</h4>
+            <div class="row">
+                <div class="col">
+                <form id="signup" method="post" action="login.php">
+                    {# <label for="user-email">Email</label> #}
+                    <input class="form-control my-3" name="email" id="user-email" type="email" placeholder="user@domain.com" required value="{{email}}">
+                    {# <label>Password</label> #}
+                    <input class="form-control my-2" name="password" id="user-password" type="password" placeholder="minimum 8 characters" required value="{{password}}">
+                    {% set outcome = result.errors | join(", ") %}
+                    <button type="submit" class="btn1 mt-3">Login</button>
+                    {% if outcome | length > 0 %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{ outcome }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endif %}
+                </form>
+                </div>
+            </div>
+        </div>
     </div>
    {% include "partial/script.html.twig" %}
   </body>

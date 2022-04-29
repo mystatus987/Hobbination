@@ -4,30 +4,33 @@
 		<body>
 
 			<h1>Welcome to Hobbination!</h1>
+			{% include "partial/navigation.html.twig" %}
+			<div class="container py-4" style="color:#5e6472">
+				{# <h1>Welcome to Hobbination!</h1> #}
+			</div>
+
 			<div class="container">
 				<div class="row">
 					{% for place in places.items %}
 						<div class="col-sm-4">
-							<div class="card" style="width: 18rem;">
-								<img src="place_images/{{place.picture}}" class="card-img-top place-image" alt="place images for {{place.place_name}}">
+							<div class="card mb-4 text-light border-1" style="width: 18rem; height: 30rem">
+								<img src="place_images/{{place.picture}}" class="card-img-top place-image" style="height: 15rem" alt="place images for {{place.place_name}}">
 								<div class="card-body">
-									<h5 class="card-title">{{place.place_name}}</h5>
-									<p class="card-text">Address:
+									<h5 class="card-title" style="color:#f7a49e">{{place.place_name}}</h5>
+									<p class="card-text" style="color:#5e6472">Address:
 										{{place.place_address}}</p>
-									<p class="card-text">Phone:
+									<p class="card-text" style="color:#5e6472">Phone:
 										{{place.place_phone_number}}</p>
-									<a href="place_details.php?id={{place.place_id}}" class="btn btn-primary">GO DETAILS</a>
+									<a href="place_details.php?id={{place.place_id}}" class="btn text-light mt-5" style="background:#f7a49e">MORE DETAILS</a>
 								</div>
 							</div>
 						</div>
 					{% endfor %}
 				</div>
 			</div>
-
-			<p>{{places.total}}</p>
-
-
+			{# <p>{{places.total}}</p> #}
 		{% include "partial/script.html.twig" %}
+		{% include "partial/footer.html.twig" %}
 		</body>
 	</head>
 </html>

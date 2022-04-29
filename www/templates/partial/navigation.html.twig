@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid px-5">
+    <a class="navbar-brand" href="index.php" style="color:#5e6472">
+      <img src="/assets/hobbination_logo-symbol.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
+      &nbsp Hobbination
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Category
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><hr class="dropdown-divider"></hr></li>
+            <li><a class="dropdown-item" href="#">Action</a></li>
+          </ul>
+        </li>
+        {# <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li> #}
+      </ul>
+      <form class="d-flex align-self-center" action="search.php" method="get">
+        <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-secondary" type="submit">Search</button>
+      </form>
+      <a href="login.php" class="btn btn-default">Login</a>
+      <a href="signup.php" class="btn text-light" style="background: #afd9e0">Register</a>
+    </div>
+  </div>
+</nav>
