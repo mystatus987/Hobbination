@@ -1,7 +1,7 @@
 version: '1.0'
 services:
   db:
-    image: mariadb:10.5.8
+    image: mysql:latest
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: e9w86036f78sd9
