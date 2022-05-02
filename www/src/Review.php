@@ -18,8 +18,8 @@ class Review extends Database {
     }
     // if none of the parameters is empty
     $query = "
-    INSERT INTO review(review_title,review_description, user_fk) VALUES (?,?,?)
-    INSERT INTO `place`(`place_id`) VALUES (?)
+      INSERT INTO review(review_title,review_description, user_fk) VALUES (?,?,?)
+      INSERT INTO `place`(`place_id`) VALUES (?)
     ";
     // pass query to database through database connection
     try{
