@@ -75,7 +75,7 @@ class Place extends Database
       place
     INNER JOIN place_image ON place.place_id = place_image.place_id
     INNER JOIN images ON place_image.image_id = images.image_id
-    WHERE place_id = ?
+    WHERE place.place_id = ?
     ";
     try {
       $statement = $this->dbconnection->prepare($query);
