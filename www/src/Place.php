@@ -74,7 +74,7 @@ class Place extends Database
     review.review_title,
     review.review_description,
     category.category_name,
-    user.user_name
+    user.name
   FROM
     place
     INNER JOIN place_image ON place.place_id = place_image.place_id
@@ -87,23 +87,21 @@ class Place extends Database
     WHERE place.place_id = ?
     ";
     try {
-      $statement = $this -> dbconnection -> prepare( $query );
-      if( !$statement ) {
+      $statement = $this->dbconnection->prepare($query);
+      if (!$statement) {
         throw new Exception("query error");
       }
       // binding ? to replace place_id
-      $statement -> bind_param( "i", $place_id );
-      if( !$statement -> execute() ) {
+      $statement->bind_param("i", $place_id);
+      if (!$statement->execute()) {
         throw new Exception("query error");
-      }
-      else {
-        $result = $statement -> get_result();
-        $detail = $result -> fetch_assoc();
+      } else {
+        $result = $statement->get_result();
+        $detail = $result->fetch_assoc();
         return $detail;
       }
-    }
-    catch( Exception $exc) {
-      echo $exc -> getMessage();
+    } catch (Exception $exc) {
+      echo $exc->getMessage();
       return false;
     }
   }

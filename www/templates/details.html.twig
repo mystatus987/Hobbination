@@ -36,11 +36,47 @@
 					</small>
 				</p>
 			</div>
+		
+		</div>
+
+		<form id="review" method="post" action="place_details.php?id={{place.id}}">
+			<h4>Write a review</h4>
+			<label class="form-label" for="review-title">Title</label>
+			<input class="form-control" name="title" id="review-title">
+			<label class="form-label" for="review-text">Content</label>
+			<textarea class="form-control" rows="3" cols="20" name="text" id="review-text"></textarea>
+			{# hidden form fields #}
+			<input type="hidden" value="{{place.id}}" name="place_id">
+			<input type="hidden" value="{{user_id}}" name="user_id">
+			<button type="submit" class="btn btn-info">Submit review</button>
+		</form>
+		{% if submitting == true and success == true %}
+			<div class="alert alert-success alert-dismissible fade show">
+				{{message}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% elseif submitting == true and success == false %}
+			<div class="alert alert-danger alert-dismissible fade show">
+				{{message}}
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-md-12">
+				{% set review_count = reviews | length %}
+				<h4>Reviews for this place
+					<span class="badge bg-info">{{review_count}}</span>
+				</h4>
+				{% for review in reviews %}
+					<h5>{{review.review_title}}</h5>
+					<p>{{review.review_description}}</p>
+				{% endfor %}
+			</div>
+		</div>
 		</div>
 
 		{% include "partial/script.html.twig" %}
 		{% include "partial/footer.html.twig" %}
 	</body>
-</html>
-
-
+</html></div>{% include "partial/script.html.twig" %}</body></html>

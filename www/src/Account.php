@@ -11,7 +11,7 @@ class Account extends Database{
       $this -> dbconnection = parent::getConnection();
     }
   
-    public function create( $email, $password ) {
+    public function create( $name,$email, $password ) {
       $errors = array();
       $response = array();
       // check if email is valid
@@ -25,11 +25,11 @@ class Account extends Database{
   
       if( count($errors) == 0 ) {
         // create the user account 
-        $query = "INSERT INTO user (user_name,user_email,user_password) 
+        $query = "INSERT INTO user (name,email,password) 
         VALUES( ?, ?, ? )";
         $statement = $this -> dbconnection -> prepare( $query );
         $hashed = password_hash( $password, PASSWORD_DEFAULT );
-        $statement -> bind_param( "ss" , $email, $hashed );
+        $statement -> bind_param( "sss" , $name, $email, $hashed );
         // try to execute statement
         try{
           if( !$statement -> execute() ) {
@@ -44,7 +44,7 @@ class Account extends Database{
           $errors["system"] = $exc -> getMessage();
           //erroe number is 
           if( $this -> dbconnection -> errno == "1062") {
-            $errors["account"] = "The email address already exists";
+            $errors["user"] = "The email address already exists";
           }
           $response["success"] = false;
           $response["message"] = "User cannot be created";
@@ -62,9 +62,9 @@ class Account extends Database{
     }
   
     public function login( $email, $password ) {
-      $error = array();
+      $errors = array();
       $response = array();
-      $query = "SELECT * FROM user AND email ?";
+      $query = "SELECT user_id, email, password FROM user WHERE email = ?";
 
       $statement = $this -> dbconnection -> prepare($query);
       $statement -> bind_param("s",$email);
@@ -81,7 +81,7 @@ class Account extends Database{
             $user_data = $result -> fetch_assoc();
             if( password_verify( $password, $user_data["password"] ) ) {
               $response["success"] = true;
-              $response["id"] = $user_data["id"];
+              $response["id"] = $user_data["user_id"];
               $response["email"] = $user_data["email"];
               return $response;
             }
