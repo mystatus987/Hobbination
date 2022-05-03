@@ -15,6 +15,8 @@ $place_name = $place_details['place_name'];
 
 $email = Session::get("email");
 $user_id = Session::get("user_id");
+
+
 // instantiate the review class
 $review = new Review();
 // true if user has just submitted a review
@@ -43,8 +45,10 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
       $message = "Your review cannot be submitted";
     }
   }
-// get book reviews
-$book_reviews = $review -> getPlaceReviews( $place_id );
+
+
+// get place reviews
+$place_reviews = $review -> getPlaceReviews( $place_id );
 // check if user has a review for this place
 $user_place_review = $review -> getUserReviewForPlace( $place_id, $user_id);
 if( $user_place_review ) {
@@ -59,5 +63,9 @@ else {
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new Twig\Environment($loader,["cache" =>false]);
 // rendering page 
-echo $twig -> render("details.html.twig",["page_title" => "HOBBINATION $place_name","place" => $place_details]);
-?>
+echo $twig -> render("details.html.twig",["page_title" => "HOBBINATION $place_name","place" => $place_details,  "email" => $email,
+"user_id" => $user_id, "reviews" => $place_reviews,
+"submitting" => $submitting,
+"success" => $success,
+"message" => $message,
+"reviewed" => $reviewed_by_user]);

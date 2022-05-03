@@ -17,6 +17,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
     if( $result["success"] == true ) {
       Session::set("email",$user_email);
       Session::set("user_id", $result["id"]);
+      header("location: /");
     }
   }
 }
