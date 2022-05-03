@@ -64,27 +64,18 @@ class Place extends Database
   {
     $query = "
     SELECT
-    place.place_id AS id,
-    place_name,
-    place_address,
-    place_phone_number,
-    place_description,
-    place_image.image_id,
-    images.image_name AS picture,
-    review.review_title,
-    review.review_description,
-    category.category_name,
-    user.name
-  FROM
-    place
+      place.place_id,
+      place_name,
+      place_address,
+      place_phone_number,
+      place_description,
+      place_image.image_id,
+      images.image_name AS picture
+    FROM
+      place
     INNER JOIN place_image ON place.place_id = place_image.place_id
     INNER JOIN images ON place_image.image_id = images.image_id
-    INNER JOIN place_review ON place.place_id = place_review.place_id
-    INNER JOIN review ON place_review.review_id = review.review_id
-    INNER JOIN place_category ON place.place_id = place_category.place_id
-    INNER JOIN category ON place_category.category_id = category.category_id
-    INNER JOIN user ON user.user_id = review.user_fk
-    WHERE place.place_id = ?
+    WHERE place_id = ?
     ";
     try {
       $statement = $this->dbconnection->prepare($query);
