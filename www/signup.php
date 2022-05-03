@@ -6,6 +6,7 @@ use textreview\Account;
 use textreview\Session;
 
 $account = new Account();
+// use textreview\Session;
 
 $result = null;
 $user_email = null;
