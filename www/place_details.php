@@ -31,7 +31,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
     $title = $_POST["title"];
     $text = $_POST["text"];
     // create the review
-    $add = $review -> addReview($place_id, $user_id, $title, $text );
+    $add = $review -> addReview( $title, $text , $user_id,$place_id );
     if( $add == true ) {
       // tell user review has been posted
       $submitting = true;
@@ -44,7 +44,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
       $success = false;
       $message = "Your review cannot be submitted";
     }
-  }
+}
 
 
 // get place reviews
@@ -64,7 +64,8 @@ $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new Twig\Environment($loader,["cache" =>false]);
 // rendering page 
 echo $twig -> render("details.html.twig",["page_title" => "HOBBINATION $place_name","place" => $place_details,  "email" => $email,
-"user_id" => $user_id, "reviews" => $place_reviews,
+"user_id" => $user_id, 
+"reviews" => $place_reviews,
 "submitting" => $submitting,
 "success" => $success,
 "message" => $message,

@@ -100,12 +100,18 @@ class Place extends Database
   public function getPlacesInCategory($category_id)
   {
     $query = "
-    SELECT place_name
-    FROM category c
-    LEFT JOIN place_category pc ON c.category_id = pc.category_id
-    JOIN place p ON pc.place_id = p.place_id
-    WHERE c.category_id = ?
-    ORDER BY c.category_id
+    SELECT
+    place_name
+FROM
+    category c
+INNER JOIN place_category pc ON
+    c.category_id = pc.category_id
+JOIN place p ON
+    pc.place_id = p.place_id
+WHERE
+    c.category_id = ?
+ORDER BY
+    c.category_id
     ";
     $statement = $this -> dbconnection -> prepare($query);
     $category_id = "id";

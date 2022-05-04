@@ -15,24 +15,21 @@ class Review extends Database
         $this->dbconnection = parent::getConnection();
     }
 
-    public function addReview($review_title, $review_text, $user_id_fk, $place_id_fk)
+    public function addReview($review_title, $review_text, $user_id, $place_id)
     {
-        if (empty($review_title) || empty($review_text) || empty($user_id_fk) || empty($place_id_fk)) {
+        if (empty($review_title) || empty($review_text) || empty($user_id) || empty($place_id)) {
             return false;
         }
         // if none of the parameters is empty
         $query = "
-        INSERT INTO `review`(
-            `review_title`,
-            `review_description`,
-            `user_id_fk`,
-            `place_id_fk`
+        INSERT INTO review(
+            review_title,
+            review_description,
+            user_id_fk,
+            place_id_fk
         )
         VALUES(
-            ?,
-            ?,
-            ?,
-            ?
+            ?,?,?,?
         )
     ";
         // pass query to database through database connection
@@ -41,7 +38,7 @@ class Review extends Database
             if (!$statement) {
                 throw new Exception("query error");
             }
-            $statement->bind_param("ssii", $review_title, $review_text, $user_id_fk, $place_id_fk);
+            $statement->bind_param("ssii", $review_title, $review_text, $user_id, $place_id);
             if (!$statement->execute()) {
                 throw new Exception("execute error");
             } else {
@@ -59,9 +56,9 @@ class Review extends Database
         SELECT
         *
     FROM
-        `review`
+        review
     WHERE
-        place_id = ?
+        place_id_fk = ?
 ";
         try {
             $statement = $this->dbconnection->prepare($query);
@@ -87,7 +84,7 @@ class Review extends Database
     public function getUserReviews($user_id)
     {
         $query = "
-    SELECT * FROM review WHERE user_id = ?
+    SELECT * FROM review WHERE user_id_fk = ?
     ";
         try {
             $statement = $this->dbconnection->prepare($query);
@@ -113,17 +110,7 @@ class Review extends Database
     public function getUserReviewForPlace($place_id, $user_id)
     {
         $query = "
-    SELECT
-    place.place_id,
-    review.review_id,
-    review.user_id_fk,
-    review.review_title,
-    review.review_description
-FROM
-    `place_review`
-INNER JOIN place ON place_review.place_id = place.place_id
-INNER JOIN review ON place_review.review_id = review.review_id
-WHERE place_id = ? AND user_id_fk =?
+     SELECT * FROM review WHERE user_id_fk = ? AND place_id_fk = ?
     ";
         try {
             $statement = $this->dbconnection->prepare($query);
