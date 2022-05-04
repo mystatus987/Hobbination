@@ -1,38 +1,73 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid px-5">
-    <a class="navbar-brand" href="index.php" style="color:#5e6472">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.php">
       <img src="/assets/hobbination_logo-symbol.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
       &nbsp Hobbination
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    {% if email | length > 0 %} 
-      <p>{{email}}</p>
-    {% endif %}
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Category
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><hr class="dropdown-divider"></hr></li>
-            <li><a class="dropdown-item" href="#">Action</a></li>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav w-100 order-1 me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Category
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                <li><a class="dropdown-item" href="category.php?>id=Dance">Dance</a></li>
+                <li><a class="dropdown-item" href="#">Active</a></li>
+                <li><a class="dropdown-item" href="#">Martial Arts</a></li>
+                <li><a class="dropdown-item" href="#">Swimming</a></li>
+                <li><a class="dropdown-item" href="#">Gaming</a></li>
+                <li><a class="dropdown-item" href="#">Art</a></li>
+                <li><a class="dropdown-item" href="#">Music</a></li>
+                <li><a class="dropdown-item" href="#">Walking and Hiking</a></li>
+                <li><a class="dropdown-item" href="#">Cycling</a></li>
+                <li><a class="dropdown-item" href="#">Driving</a></li>
+                <li><hr class="dropdown-divider"></hr></li>
+                <li><a class="dropdown-item" href="#">All</a></li>
+              </ul>
+            </li>
           </ul>
         </li>
-        {# <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li> #}
       </ul>
-      <form class="d-flex align-self-center" action="search.php" method="get">
+      <form class="d-flex flex-row mx-auto w-100 order-2 me-5" action="search.php" method="get">
         <input class="form-control me-2" name="query" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary" type="submit">Search</button>
+        <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <a href="login.php" class="btn btn-default">Login</a>
-      <a href="signup.php" class="btn text-light" style="background: #afd9e0">Register</a>
+      {% if email | length == 0 %}
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse">
+          <ul class="navbar-nav w-100 order-1 me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link btn text-light me-3" style="background: #afd9e0" href="login.php">Login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+          </ul>
+        </div>
+      {% endif %}
+      {% if email | length > 0 %}
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse">
+          <i class="fas fa-user"></i>
+          <p class="text-muted mb-0">{{email}}</p>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></hr></li>
+                <li><a class="dropdown-item" href="signout.php">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      {% endif %}
+       
+
     </div>
   </div>
 </nav>

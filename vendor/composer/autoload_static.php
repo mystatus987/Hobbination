@@ -21,6 +21,10 @@ class ComposerStaticInitbadd77772e5594d3652e5bf6e3092489
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
         ),
+        'K' => 
+        array (
+            'Khill\\FontAwesome\\' => 18,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -35,6 +39,10 @@ class ComposerStaticInitbadd77772e5594d3652e5bf6e3092489
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Khill\\FontAwesome\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/khill/fontawesomephp/src',
         ),
     );
 

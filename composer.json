@@ -1,5 +1,8 @@
 {
     "require": {
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0", 
+        "khill/fontawesomephp" : "~2.0"
     }
+
+    
 }
