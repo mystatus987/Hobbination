@@ -31,7 +31,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
     $title = $_POST["title"];
     $text = $_POST["text"];
     // create the review
-    $add = $review -> addReview( $title, $text , $user_id,$place_id );
+    $add = $review -> addReview( $title, $text , $user_id,$place_id);
     if( $add == true ) {
       // tell user review has been posted
       $submitting = true;

@@ -47,8 +47,8 @@
 					<label class="form-label mt-3" for="review-text">Content</label>
 					<textarea class="form-control" rows="3" cols="20" name="text" id="review-text"></textarea>
 					{# hidden form fields #}
-					<input type="hidden" value="{{user_id}}" name="user_id">
-					<input type="hidden" value="{{place.id}}" name="place_id">
+					<input type="hidden" value="{{user.user_id}}" name="user_id">
+					<input type="hidden" value="{{place.place.id}}" name="place_id">
 					<button type="submit" class="btn text-light mt-5" style="background: #f7a59e">SUBMIT REVIEW</button>
 				</form>
 			</div>
@@ -79,4 +79,4 @@
 			</div>
 		</div>
 	</body>
-</html></div>{% include "partial/script.html.twig" %}{% include "partial/footer.html.twig" %}</body></html></div>{% include "partial/script.html.twig" %}</body></html>
+</html>

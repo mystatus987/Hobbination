@@ -22,7 +22,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
     $result = $account -> create( $user_name,$user_email, $user_password);
     if( $result["success"] == true ) {
       Session::set("email", $result["email"] );
-      Session::set("account_id", $result["id"] );
+      Session::set("user_id", $result["id"] );
 
       // redirect user to home page
       header("location: /");

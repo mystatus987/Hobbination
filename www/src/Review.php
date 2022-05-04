@@ -84,7 +84,7 @@ class Review extends Database
     public function getUserReviews($user_id)
     {
         $query = "
-    SELECT * FROM review WHERE user_id_fk = ?
+        SELECT * FROM review WHERE user_id_fk = ?
     ";
         try {
             $statement = $this->dbconnection->prepare($query);
