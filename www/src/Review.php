@@ -25,7 +25,7 @@ class Review extends Database
         INSERT INTO review
         (
             review_title,
-            review_text,
+            review_description,
             user_id_fk,
             place_id_fk
         )

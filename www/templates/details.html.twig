@@ -20,17 +20,6 @@
 			</div>
 		</div>
 
-		<div class="container mb-5">
-			<h1 class="my-4" style="color:#afd9e0">Reviews</h1>
-			<div class="card text-dark bg-light mb-4" style="max-width: 100rem;">
-				<div class="card-header">
-					<h5 class="card-title pt-2">{{place.review_title}}</h5>
-				</div>
-				<div class="card-body pt-3" style="color:#5e6472">
-					<p class="card-text">{{place.review_description}}</p>
-				</div>
-			</div>
-
 		</div>
 		{% if user_id and reviewed == false %}
 			<div class="container mb-5">
@@ -41,8 +30,8 @@
 					<label class="form-label mt-3" for="review-text">Content</label>
 					<textarea class="form-control" rows="3" cols="20" name="text" id="review-text"></textarea>
 					{# hidden form fields #}
-					<input type="hidden" value="{{user_id}}" name="user_id">
 					<input type="hidden" value="{{place.id}}" name="place_id">
+					<input type="hidden" value="{{user_id}}" name="user_id">
 					<button type="submit" class="btn text-light mt-5" style="background: #f7a59e">SUBMIT REVIEW</button>
 				</form>
 			</div>
@@ -74,7 +63,7 @@
 						<p class="h5 p-2">{{review.review_title}}</p>
 					</div>
 					<div class="row" style="color: #5f6573; background: white; border-radius: 0px 0px 5px 5px; border: 1px solid #bde4de; padding: 0.5rem;">
-						<p>{{review.review_text}}</p>
+						<p>{{review.review_description}}</p>
 						<footer class="blockquote-footer">Author: {{email}}</footer>
 					</div>
 				</div>
@@ -82,4 +71,4 @@
 			</div>
 		</div>
 	</body>
-</html>
+</html></div>{% include "partial/script.html.twig" %}{% include "partial/footer.html.twig" %}</body></html></div>{% include "partial/script.html.twig" %}</body></html>
