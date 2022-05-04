@@ -26,8 +26,9 @@ $message = "";
 
 // if a review is submitted (via POST request)
 if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
-    $review_title = $_POST["review_title"];
-    $review_text = $_POST["review_text"];
+    $review_title = $_POST["title"];
+    $review_text = $_POST["text"];
+    
     // create the review
     $add = $review -> addReview($review_title, $review_text, $user_id, $place_id);
     if( $add == true ) {

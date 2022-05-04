@@ -29,18 +29,12 @@
 				<div class="card-body pt-3" style="color:#5e6472">
 					<p class="card-text">{{place.review_description}}</p>
 				</div>
-				<p class="card-text m-3">
-					<small class="text-muted">
-						username:
-						{{place.user_name}}
-					</small>
-				</p>
 			</div>
 
 		</div>
 		{% if user_id and reviewed == false %}
 			<div class="container mb-5">
-				<form id="review" method="post" action="place_details.php?id={{place.id}}">
+				<form id="review" method="post" action="place_details.php?id={{place.place_id}}">
 					<h4 class="my-4">Write a review</h4>
 					<label class="form-label" for="review-title">Title</label>
 					<input class="form-control" name="title" id="review-title">
@@ -69,12 +63,21 @@
 		<div class="container mb-5">
 			<div class="col-md-12">
 				{% set review_count = reviews | length %}
-				<h4>Reviews for this place
-					<span class="badge bg-info">{{review_count}}</span>
+				<hr/>
+				<br/>
+				<h4 class="mb-5">Reviews for this place
+					<span class="badge badge-pill bg-info">{{review_count}}</span>
 				</h4>
 				{% for review in reviews %}
-					<h5>{{review.review_title}}</h5>
-					<p>{{review.review_description}}</p>
+				<div class="container">
+					<div class="row d-flex p-3" style="color: #5f6573; background: #bde4de; border-radius: 5px 5px 0px 0px; padding: 0.5rem;">
+						<p class="h5 p-2">{{review.review_title}}</p>
+					</div>
+					<div class="row" style="color: #5f6573; background: white; border-radius: 0px 0px 5px 5px; border: 1px solid #bde4de; padding: 0.5rem;">
+						<p>{{review.review_text}}</p>
+						<footer class="blockquote-footer">Author: {{email}}</footer>
+					</div>
+				</div>
 				{% endfor %}
 			</div>
 		</div>
