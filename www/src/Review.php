@@ -22,14 +22,19 @@ class Review extends Database
         }
         // if none of the parameters is empty
         $query = "
-        INSERT INTO review(
+        INSERT INTO review
+        (
             review_title,
-            review_description,
+            review_text,
             user_id_fk,
             place_id_fk
         )
-        VALUES(
-            ?,?,?,?
+        VALUES
+        (
+            ?,
+            ?,
+            ?,
+            ?
         )
     ";
         // pass query to database through database connection
@@ -110,8 +115,18 @@ class Review extends Database
     public function getUserReviewForPlace($place_id, $user_id)
     {
         $query = "
-     SELECT * FROM review WHERE user_id_fk = ? AND place_id_fk = ?
-    ";
+        SELECT
+        place.place_id,
+        review.review_id,
+        review.user_id_fk,
+        review.review_title,
+        review.review_description
+        FROM
+        place_review
+        INNER JOIN place ON place_review.place_id = place.place_id
+        INNER JOIN review ON place_review.review_id = review.review_id
+        WHERE place_id_fk = ? AND user_id_fk =?
+        ";
         try {
             $statement = $this->dbconnection->prepare($query);
             if (!$statement) {

@@ -14,7 +14,7 @@ class Session {
 
   public static function get( $name ) {
     self::init();
-    if( array_key_exists( $name, $_SESSION ) ) {
+    if( array_key_exists( $name, (array)$_SESSION ) ) {
       return $_SESSION[$name];
     }
     else {
