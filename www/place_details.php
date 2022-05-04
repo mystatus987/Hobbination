@@ -15,7 +15,7 @@ $place_name = $place_details['place_name'];
 
 $email = Session::get("email");
 $user_id = Session::get("user_id");
-
+print_r( $_SESSION );
 
 // instantiate the review class
 $review = new Review();
@@ -30,6 +30,7 @@ $message = "";
 if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
     $title = $_POST["title"];
     $text = $_POST["text"];
+    print_r( $_POST );
     // create the review
     $add = $review -> addReview( $title, $text , $user_id,$place_id);
     if( $add == true ) {
