@@ -8,7 +8,6 @@ $search = new Search();
 
 // super global $_GET is used to access search term in variable called "query"
 $search_term = $_GET["query"];
-// echo "You are looking for " . $search_term;
 
 $search_result = $search -> lookUp( $search_term );
 

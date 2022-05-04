@@ -3,42 +3,37 @@ require("vendor/autoload.php");
 
 use textreview\Place;
 use textreview\Search;
-use textreview\Category;
+use textreview\Session;
 
+$email = Session::get("email");
+$place = new Place();
 $search = new Search();
-$categories = $search -> getCategories();
 
-$cat_id = $_GET['cat'];
-$search_result = $search -> lookUpByCategory( $cat_id );
-
-//print_r( $search_result );
-$site_name = "Hobbination";
-$count = count( $search_result );
-
-// Session class
 $user_email = Session::get("user_email");
 $user_Id = Session::get("user_id");
 $user_image = Session::get("user_image");
+
+$category_id = $_GET['id'];
+$categoryPlaces = $place -> getPlacesInCategory($category_id);
+
+$site_name = "Hobbination";
+// $count = count( $categoryPlaces );
 
 // create twig environment
 $loader = new \Twig\Loader\FilesystemLoader("templates");
 $twig = new Twig\Environment( $loader, [ "cache" => false ] );
 
 echo $twig -> render(
-  "search_category.html.twig", 
+  "category.html.twig", 
   [
     // Search Class
     // "page_title" => "Search result for $cateName",  
-    "result" => $search_result,
+    "result" => $categoryPlaces,
     "site_name" => $site_name,
-    "total" => $count,
+    // "total" => $count,
 
     // nav category pull down menu
-    "categories" => $categories,
-
-    // Session after login
-    "user_email" => $user_email,
-    "user_Id"=> $user_Id,
-    "user_image" => $user_image
+    //"categories" => $categories,
+    "email" => $email
   ] );
 ?>

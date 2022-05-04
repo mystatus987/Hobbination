@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">
+    <a class="navbar-brand me-5" style="color: #5f6573" href="index.php">
       <img src="/assets/hobbination_logo-symbol.png" alt="" width="50" height="50" class="d-inline-block align-text-center">
       &nbsp Hobbination
     </a>
@@ -16,18 +16,18 @@
                 Category
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="category.php?>id=Dance">Dance</a></li>
-                <li><a class="dropdown-item" href="#">Active</a></li>
-                <li><a class="dropdown-item" href="#">Martial Arts</a></li>
-                <li><a class="dropdown-item" href="#">Swimming</a></li>
-                <li><a class="dropdown-item" href="#">Gaming</a></li>
-                <li><a class="dropdown-item" href="#">Art</a></li>
-                <li><a class="dropdown-item" href="#">Music</a></li>
-                <li><a class="dropdown-item" href="#">Walking and Hiking</a></li>
-                <li><a class="dropdown-item" href="#">Cycling</a></li>
-                <li><a class="dropdown-item" href="#">Driving</a></li>
-                <li><hr class="dropdown-divider"></hr></li>
-                <li><a class="dropdown-item" href="#">All</a></li>
+                <li><a class="dropdown-item" href="category.php?id=1">Dance</a></li>
+                <li><a class="dropdown-item" href="category.php?id=2">Active</a></li>
+                <li><a class="dropdown-item" href="category.php?id=3">Martial Arts</a></li>
+                <li><a class="dropdown-item" href="category.php?id=4">Swimming</a></li>
+                <li><a class="dropdown-item" href="category.php?id=5">Gaming</a></li>
+                <li><a class="dropdown-item" href="category.php?id=6">Art</a></li>
+                <li><a class="dropdown-item" href="category.php?id=7">Music</a></li>
+                <li><a class="dropdown-item" href="category.php?id=8">Walking and Hiking</a></li>
+                <li><a class="dropdown-item" href="category.php?id=9">Cycling</a></li>
+                <li><a class="dropdown-item" href="category.php?id=10">Driving</a></li>
+                {# <li><hr class="dropdown-divider"></hr></li>
+                <li><a class="dropdown-item" href="#">All</a></li> #}
               </ul>
             </li>
           </ul>
@@ -51,11 +51,10 @@
       {% endif %}
       {% if email | length > 0 %}
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse">
-          <i class="fas fa-user"></i>
-          <p class="text-muted mb-0">{{email}}</p>
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{email}}
               </a>
               <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="#">Profile</a></li>

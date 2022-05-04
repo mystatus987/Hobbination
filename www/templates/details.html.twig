@@ -39,17 +39,19 @@
 
 		</div>
 		{% if user_id and reviewed == false %}
-			<form id="review" method="post" action="place_details.php?id={{place.id}}">
-				<h4>Write a review</h4>
-				<label class="form-label" for="review-title">Title</label>
-				<input class="form-control" name="title" id="review-title">
-				<label class="form-label" for="review-text">Content</label>
-				<textarea class="form-control" rows="3" cols="20" name="text" id="review-text"></textarea>
-				{# hidden form fields #}
-				<input type="hidden" value="{{place.id}}" name="place_id">
-				<input type="hidden" value="{{user_id}}" name="user_id">
-				<button type="submit" class="btn btn-info">Submit review</button>
-			</form>
+			<div class="container mb-5">
+				<form id="review" method="post" action="place_details.php?id={{place.id}}">
+					<h4 class="my-4">Write a review</h4>
+					<label class="form-label" for="review-title">Title</label>
+					<input class="form-control" name="title" id="review-title">
+					<label class="form-label mt-3" for="review-text">Content</label>
+					<textarea class="form-control" rows="3" cols="20" name="text" id="review-text"></textarea>
+					{# hidden form fields #}
+					<input type="hidden" value="{{place.id}}" name="place_id">
+					<input type="hidden" value="{{user_id}}" name="user_id">
+					<button type="submit" class="btn text-light mt-5" style="background: #f7a59e">SUBMIT REVIEW</button>
+				</form>
+			</div>
 		{% endif %}
 
 		{% if submitting == true and success == true %}
@@ -64,7 +66,7 @@
 			</div>
 		{% endif %}
 
-		<div class="row">
+		<div class="container mb-5">
 			<div class="col-md-12">
 				{% set review_count = reviews | length %}
 				<h4>Reviews for this place

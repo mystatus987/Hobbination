@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  {% include "partial/head.html.twig" %}
+  <body class="d-flex flex-column min-vh-100">
+    {% include "partial/navigation.html.twig" %}
+    <div class="container" style="color:#5e6472">
+     {% for item in result %}
+      <div class="row my-3">
+        <a href="place_details.php?id={{place.place_id}}">• {{item.place_name}}</a>
+      </div>
+     {% endfor %}
+    </div>
+   {% include "partial/footer.html.twig" %}
+   {% include "partial/script.html.twig" %}
+  </body>
+</html>

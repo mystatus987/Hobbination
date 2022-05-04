@@ -96,4 +96,38 @@ class Place extends Database
       return false;
     }
   }
+
+  public function getPlacesInCategory($category_id)
+  {
+    $query = "
+    SELECT place_name
+    FROM category c
+    LEFT JOIN place_category pc ON c.category_id = pc.category_id
+    JOIN place p ON pc.place_id = p.place_id
+    WHERE c.category_id = ?
+    ORDER BY c.category_id
+    ";
+    $statement = $this -> dbconnection -> prepare($query);
+    $category_id = "id";
+    $statement->bind_param("i", $category_id);
+    try {
+      if (!$statement -> execute()) {
+        throw new Exception("query error");
+      } 
+      else {
+        $categoryPlaces = array();
+        $items = array();
+        $result = $statement -> get_result();
+        while( $row = $result -> fetch_assoc() ) {
+          array_push( $categoryPlaces, $row );
+          print_r($categoryPlaces);
+        }
+        $categoryPlaces["items"] = $items;
+        return $categoryPlaces;
+      }
+    } 
+    catch (Exception $exc) {
+      echo $exc -> getMessage();
+    }
+  }
 }

@@ -13,7 +13,7 @@ class Search extends Database {
   }
   public function lookUp( $term ) {
     $query = "
-    SELECT place_name 
+    SELECT * 
     FROM place 
     WHERE place_name LIKE ?";
     $statement = $this -> dbconnection -> prepare( $query );
@@ -27,7 +27,7 @@ class Search extends Database {
         $search_result = array();
         $result = $statement -> get_result();
         while( $row = $result -> fetch_assoc() ) {
-          array_push( $search_result, $row );
+          array_push( $search_result, $row );   
         }
         return $search_result;
       }
