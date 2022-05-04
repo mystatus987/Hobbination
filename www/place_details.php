@@ -6,17 +6,15 @@ require("vendor/autoload.php");
 use textreview\Place;
 use textreview\Session;
 use textreview\Review;
+
 // get gloval variable 
 $place_id = $_GET['id'];
 
 $place = new Place();
 $place_details = $place -> getDetails($place_id);
-$place_name = $place_details['place_name'];
-
+$place_name = isset($place_details['place_name']);
 $email = Session::get("email");
 $user_id = Session::get("user_id");
-
-
 // instantiate the review class
 $review = new Review();
 // true if user has just submitted a review
@@ -28,10 +26,10 @@ $message = "";
 
 // if a review is submitted (via POST request)
 if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
-    $title = $_POST["title"];
-    $text = $_POST["text"];
+    $review_title = $_POST["review_title"];
+    $review_text = $_POST["review_text"];
     // create the review
-    $add = $review -> addReview($place_id, $user_id, $title, $text );
+    $add = $review -> addReview($review_title, $review_text, $user_id, $place_id);
     if( $add == true ) {
       // tell user review has been posted
       $submitting = true;
@@ -63,9 +61,15 @@ else {
 $loader = new \Twig\Loader\FilesystemLoader('templates');
 $twig = new Twig\Environment($loader,["cache" =>false]);
 // rendering page 
-echo $twig -> render("details.html.twig",["page_title" => "HOBBINATION $place_name","place" => $place_details,  "email" => $email,
-"user_id" => $user_id, "reviews" => $place_reviews,
-"submitting" => $submitting,
-"success" => $success,
-"message" => $message,
-"reviewed" => $reviewed_by_user]);
+echo $twig -> render("details.html.twig",
+[
+  "page_title" => "HOBBINATION $place_name",
+  "place" => $place_details,  
+  "email" => $email,
+  "user_id" => $user_id, 
+  "reviews" => $place_reviews,
+  "submitting" => $submitting,
+  "success" => $success,
+  "message" => $message,
+  "reviewed" => $reviewed_by_user
+]);

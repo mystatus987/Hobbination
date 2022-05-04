@@ -1,57 +1,46 @@
 <?php
+// enable composer autoloading
+require("vendor/autoload.php");
 
-namespace textreview;
+use restaurantreview\Search;
+use restaurantreview\Restaurant;
+use restaurantreview\Session;
 
-use textreview\Database;
-use Exception;
+// Instantiate Search class
+$search = new Search();
+$categories = $search -> getCategories();
 
-class Place extends Database
-{
-  private $dbconnection;
-  public function __construct()
-  {
-    // call the __construct() method of the Database class to initialise
-    parent::__construct();
-    // get the connection after it's been created and keep a reference in 
-    // a local variable called $db_connection
-    $this->dbconnection = parent::getConnection();
-  }
+$cat_id = $_GET['cat'];
+$search_result = $search -> lookUpByCategory( $cat_id );
 
+//print_r( $search_result );
+$site_name = "Restaurant Review";
+$count = count( $search_result );
 
-public function getDance()
-  {
-    $query = "
-    SELECT
-      category_id as ID
-    FROM category
-    INNER JOIN place_category
-    ON place.cat_id = place_category.cat_id
-    WHERE place_category.cat_name = 'Dance' 
-    ";
+// Session class
+$user_email = Session::get("user_email");
+$user_Id = Session::get("user_id");
+$user_image = Session::get("user_image");
 
-    try {
-      $statement = $this->dbconnection->prepare($query);
-      if (!$statement) {
-        throw new Exception("problem with query");
-      }
+// create twig environment
+$loader = new \Twig\Loader\FilesystemLoader("templates");
+$twig = new Twig\Environment( $loader, [ "cache" => false ] );
 
-      if (!$statement->execute()) {
-        throw new Exception("query failed to execute");
-      } else {
-        $places = array();
-        $items = array();
-        $result = $statement->get_result();
-        while ($row = $result->fetch_assoc()) {
-          array_push($items, $row);
-        }
-        $places["total"] = count($items);
-        $places["items"] = $items;
+echo $twig -> render(
+  "search_category.html.twig", 
+  [
+    // Search Class
+    // "page_title" => "Search result for $cateName",  
+    "result" => $search_result,
+    "site_name" => $site_name,
+    "total" => $count,
 
-        return $places;
-      }
-      return null;
-    } catch (Exception $exception) {
-      echo $exception->getMessage();
-    }
-  }
-}
+    // nav category pull down menu
+    "categories" => $categories,
+
+    // Session after login
+    "user_email" => $user_email,
+    "user_Id"=> $user_Id,
+    "user_image" => $user_image
+  ] );
+?>
