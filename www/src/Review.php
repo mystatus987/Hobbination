@@ -58,13 +58,11 @@ class Review extends Database
     public function getPlaceReviews($place_id)
     {
         $query = "
-        SELECT
-        *
-    FROM
-        review
-    WHERE
+        SELECT *
+        FROM review
+        WHERE
         place_id_fk = ?
-";
+        ";
         try {
             $statement = $this->dbconnection->prepare($query);
             if (!$statement) {
@@ -89,8 +87,10 @@ class Review extends Database
     public function getUserReviews($user_id)
     {
         $query = "
-        SELECT * FROM review WHERE user_id_fk = ?
-    ";
+        SELECT * 
+        FROM review 
+        WHERE user_id_fk = ?
+        ";
         try {
             $statement = $this->dbconnection->prepare($query);
             if (!$statement) {

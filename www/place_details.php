@@ -43,7 +43,7 @@ if( $_SERVER["REQUEST_METHOD"] == "POST" ) {
       $success = false;
       $message = "Your review cannot be submitted";
     }
-}
+  }
 
 
 // get place reviews
