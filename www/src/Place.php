@@ -84,15 +84,15 @@ class Place extends Database
       }
       // binding ? to replace place_id
       $statement->bind_param("i", $place_id);
-      if (!$statement->execute()) {
+      if (!$statement -> execute()) {
         throw new Exception("query error");
       } else {
-        $result = $statement->get_result();
-        $detail = $result->fetch_assoc();
+        $result = $statement -> get_result();
+        $detail = $result -> fetch_assoc();
         return $detail;
       }
     } catch (Exception $exc) {
-      echo $exc->getMessage();
+      echo $exc -> getMessage();
       return false;
     }
   }
@@ -108,7 +108,6 @@ class Place extends Database
     ORDER BY c.category_id
     ";
     $statement = $this -> dbconnection -> prepare($query);
-    $category_id = "id";
     $statement->bind_param("i", $category_id);
     try {
       if (!$statement -> execute()) {
@@ -120,9 +119,7 @@ class Place extends Database
         $result = $statement -> get_result();
         while( $row = $result -> fetch_assoc() ) {
           array_push( $categoryPlaces, $row );
-          print_r($categoryPlaces);
         }
-        $categoryPlaces["items"] = $items;
         return $categoryPlaces;
       }
     } 

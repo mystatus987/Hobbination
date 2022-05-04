@@ -15,7 +15,6 @@ $user_image = Session::get("user_image");
 
 $category_id = $_GET['id'];
 $categoryPlaces = $place -> getPlacesInCategory($category_id);
-print_r( $categoryPlaces );
 
 $site_name = "Hobbination";
 // $count = count( $categoryPlaces );
